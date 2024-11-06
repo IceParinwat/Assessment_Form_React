@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { Link, Outlet } from "react-router-dom";
 
-export default function Home() {
+export default function Home({ title, handleShowTitle }) {
   return (
     <div className="min-h-screen bg-gray-100">
       <main className="max-w-7xl mx-auto px-6 py-12">
@@ -8,13 +9,14 @@ export default function Home() {
           <h1 className="text-4xl font-bold mb-4">
             Generation Thailand
             <br />
-            React - Assessment
+            {title}
           </h1>
         </div>
 
         <div className="flex justify-center gap-8">
           {/* สร้าง Link เพื่อไปหน้า user */}
           <Link
+            onClick={() => handleShowTitle("Home - User Sector")}
             to="/user"
             className="bg-white px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
           >
@@ -22,6 +24,7 @@ export default function Home() {
           </Link>
           {/* สร้าง Link เพื่อไปหน้า admin */}
           <Link
+            onClick={() => handleShowTitle("Home - Admin Sector")}
             to="/admin"
             className="bg-white px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
           >

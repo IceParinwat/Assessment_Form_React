@@ -13,30 +13,42 @@ function App() {
     { id: 1, name: "employee 1", lastName: "em", position: "Engineer" },
     { id: 2, name: "employee 2", lastName: "lord", position: "Designer" },
   ]);
+
+  const [title, setTitle] = useState("React - Assessment");
+
+  const handleShowTitle = (newTitle) => {
+    setTitle(newTitle);
+  };
+
   return (
     <BrowserRouter>
-     {/* เรียกใช้ component Navbar จะติดไปทุกหน้าของทุก Route */}
-      <Navbar />
+      {/* เรียกใช้ component Navbar จะติดไปทุกหน้าของทุก Route */}
+      <Navbar handleShowTitle={handleShowTitle} />
+
       <Routes>
-        {/* กำหนดเส้นทางให้ Route Home เป็น Parents */}
-        <Route path="/" element={<Home />}>
-          {/* กำหนดเส้นทางให้ Route admin เป็น children ของ home */}
+        {/* กำหนดเส้นทางให้ Route Home เป็น Parent */}
+        <Route
+          path="/"
+          element={<Home title={title} handleShowTitle={handleShowTitle} />}
+        >
+          {/* กำหนดเส้นทางให้ Route admin เป็น children ของ Home */}
           <Route
-            path="/admin"
+            path="admin"
             element={
-              // ส่งข้อมูล adminData ไปให้ Admin เพื่อแสดงข้อมูล
-              <Admin adminData={adminData} setAdminData={setAdminData} />
+              <Admin
+                title={title}
+                adminData={adminData}
+                setAdminData={setAdminData}
+              />
             }
           />
-          {/* กำหนดเส้นทางให้ Route user เป็น children ของ home */}
+          {/* กำหนดเส้นทางให้ Route user เป็น children ของ Home */}
           <Route
-            path="/user"
-            element={
-              // ส่งข้อมูล adminData ไปให้หน้า User เพื่อแสดงข้อมูล
-              <User adminData={adminData} />
-            }
+            path="user"
+            element={<User title={title} adminData={adminData} />}
           />
         </Route>
+
         {/* กำหนดเส้นทางให้ Route Owner */}
         <Route path="/owner" element={<Owner />} />
       </Routes>
