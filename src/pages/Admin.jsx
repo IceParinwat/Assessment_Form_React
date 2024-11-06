@@ -6,7 +6,7 @@ export default function Admin({ adminData, setAdminData }) {
   // กำหนดค่าเริ่มต้นของ state ของผู้ใช้เป็นค่าว่าง
   const [newUser, setNewUser] = useState({
     name: "",
-    lastName: "",
+    lastname: "",
     position: "",
   });
 
@@ -36,7 +36,7 @@ export default function Admin({ adminData, setAdminData }) {
 
     // ถ้า name,lastname,position เป็นค่าว่างจะให้ดึง ข้อความ Name, Last Name,Position ไปแสดงการแจ้งเตือน
     if (!newUser.name) missingInput.push("Name");
-    if (!newUser.lastName) missingInput.push("Last Name");
+    if (!newUser.lastname) missingInput.push("Last Name");
     if (!newUser.position) missingInput.push("Position");
     // ตรวจสอบว่าค่าของ Input ทั้ง 3 เป็น 0 หรือไม่ ถ้าใช่ก็ให้แสดง Error
     if (missingInput.length > 0) {
@@ -65,7 +65,7 @@ export default function Admin({ adminData, setAdminData }) {
       // Reset ค่าที่กรอกเข้าไปให้เป็นค่าว่าง
       setNewUser({
         name: "",
-        lastName: "",
+        lastname: "",
         position: "",
       });
       setShowError(false);
@@ -116,12 +116,12 @@ export default function Admin({ adminData, setAdminData }) {
             />
             <input
               type="text"
-              name="lastName"
-              value={newUser.lastName}
+              name="lastname"
+              value={newUser.lastname}
               onChange={handleInputChange}
               placeholder="Last Name"
               className={`p-2 border rounded w-64 ${
-                showError && !newUser.lastName ? "border-red-500" : ""
+                showError && !newUser.lastname ? "border-red-500" : ""
               }`}
             />
             <input
@@ -159,7 +159,7 @@ export default function Admin({ adminData, setAdminData }) {
               {adminData.map((user) => (
                 <tr key={user.id}>
                   <td className="border p-3">{user.name}</td>
-                  <td className="border p-3">{user.lastName}</td>
+                  <td className="border p-3">{user.lastname}</td>
                   <td className="border p-3">{user.position}</td>
                   <td className="border p-3">
                     <button
