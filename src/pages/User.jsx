@@ -17,7 +17,7 @@ export default function User({ adminData }) {
           {adminData.map((user) => (
             <tr key={user.id}>
               <td className="border p-3">{user.name}</td>
-              <td className="border p-3">{user.lastName}</td>
+              <td className="border p-3">{user.lastname}</td>
               <td className="border p-3">{user.position}</td>
             </tr>
           ))}
