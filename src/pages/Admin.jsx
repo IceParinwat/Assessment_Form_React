@@ -77,23 +77,28 @@ export default function Admin({ adminData, setAdminData }) {
     setAdminData(adminData.filter((user) => user.id !== id));
   };
 
+  // Function ลบผู้ใช้ทั้งหมด
+  const deleteAllUsers = () => {
+    // ลบข้อมูลทั้งหมดใน adminData
+    setAdminData([]);
+  };
+
   return (
     <div>
       <div className="p-6 max-w-4xl mx-auto">
         <div className="mb-8">
           <h2 className="text-xl font-bold mb-4">Create User Here</h2>
-          {/* ถ้าผู้ใช้ ไม่กรอกข้อความให้แสดง error */}
+
           {showError && (
             <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md">
               <div className="flex items-center justify-between text-red-700">
-                {/* แสดงข้อความ Error */}
                 <span>{error}</span>
                 <button
                   onClick={() => setShowError(false)}
                   className="text-red-700 hover:text-red-900"
                 >
                   ✕
-                </button>{" "}
+                </button>
               </div>
             </div>
           )}
@@ -151,7 +156,6 @@ export default function Admin({ adminData, setAdminData }) {
               </tr>
             </thead>
             <tbody>
-              {/* ใช้ .map เพื่อวนลูป และ สร้าง Array ใหม่ และแสดงข้อมูลแต่ละตัวใน adminData */}
               {adminData.map((user) => (
                 <tr key={user.id}>
                   <td className="border p-3">{user.name}</td>
@@ -169,6 +173,18 @@ export default function Admin({ adminData, setAdminData }) {
               ))}
             </tbody>
           </table>
+
+          {/* ปุ่ม Delete All */}
+          {adminData.length > 0 && (
+            <div className="flex justify-center mt-4">
+              <button
+                onClick={deleteAllUsers}
+                className="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600"
+              >
+                Delete All
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
