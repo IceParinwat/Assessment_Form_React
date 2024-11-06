@@ -4,8 +4,6 @@
 export default function User({ adminData }) {
   return (
     <div className="p-6 max-w-4xl mx-auto">
-      <h2 className="text-xl font-bold mb-4">User View</h2>
-
       <table className="w-full border-collapse border rounded">
         <thead className="bg-gray-50">
           <tr>
@@ -15,7 +13,7 @@ export default function User({ adminData }) {
           </tr>
         </thead>
         <tbody>
-        {/* ใช้ .map เพื่อสร้าง Array ใหม่ และ วนลูปแสดงข้อมูลจาก adminData */}
+          {/* ใช้ .map เพื่อสร้าง Array ใหม่ และ วนลูปแสดงข้อมูลจาก adminData */}
           {adminData.map((user) => (
             <tr key={user.id}>
               <td className="border p-3">{user.name}</td>
