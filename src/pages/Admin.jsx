@@ -144,8 +144,6 @@ export default function Admin({ adminData, setAdminData }) {
         </div>
 
         <div>
-          <h3 className="text-lg text-gray-500 mb-2">Table 1</h3>
-
           <table className="w-full border-collapse border rounded">
             <thead className="bg-gray-50">
               <tr>
